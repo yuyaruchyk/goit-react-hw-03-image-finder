@@ -1,5 +1,4 @@
 import { Component } from 'react';
-
 import { SearchForm, Header, SearchBtn, SearchInput } from './Searchbar.styled';
 
 
@@ -12,7 +11,7 @@ export default class Searchbar extends Component {
   handleInputChange = e => {
     this.setState({ initialQuery: e.currentTarget.value });
   };
-  handleSubmit = e => {
+  onSubmit = e => {
     e.preventDefault();
     const initialQuery = this.state.initialQuery.trim();
     if (!initialQuery || initialQuery === '') {
@@ -27,7 +26,7 @@ export default class Searchbar extends Component {
     const { initialQuery } = this.state;
     return (
       <Header>
-        <SearchForm onSubmit={this.handleSubmit}>
+        <SearchForm onSubmit={this.onSubmit}>
           <SearchBtn type="submit">
            
             <SearchInput />

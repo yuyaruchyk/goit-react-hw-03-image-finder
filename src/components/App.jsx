@@ -1,32 +1,40 @@
-import { Component } from "react";
-import { Container } from "./App.styled";
-import Searchbar from "./Searchbar/Searchbar";
-
-
-
-
+import React from 'react';
+import { Component } from 'react';
+import { Container } from './App.styled';
+import Searchbar from './Searchbar/Searchbar';
 
 export class App extends Component {
   state = {
-    image: [],
-    searchQuery: '',
+    images: [
 
-  }
-  
-  handleFormSubmit = query => {
-    this.setState({ searchQuery: query })
-  }
+    ],
+    searchQuery: '',
+  };
+
+  updateQuery = newQuery => {
+    this.setState(() => {
+      return {
+        searchQuery: newQuery,
+      };
+    });
+  };
+
+
+
+
+
 
   render() {
     const { searchQuery } = this.state;
+    
+
     return (
       <Container>
-        <Searchbar
-          onSubmit={this.handleFormSubmit}
-        />
+        <Searchbar></Searchbar>
        
-        
       </Container>
     );
   }
-};
+}
+
+export default App;
