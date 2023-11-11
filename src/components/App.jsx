@@ -2,22 +2,23 @@ import React from 'react';
 import { Component } from 'react';
 import { Container } from './App.styled';
 import Searchbar from './Searchbar/Searchbar';
+import ImageGallery from './ImageGallery/ImageGallery';
+
 
 export class App extends Component {
   state = {
     images: [
 
     ],
-    searchQuery: '',
+    searchText: '',
   };
 
-  updateQuery = newQuery => {
-    this.setState(() => {
-      return {
-        searchQuery: newQuery,
-      };
-    });
-  };
+
+
+  handleSearch = (searchText) => {
+    this.setState({searchText})
+
+  }
 
 
 
@@ -31,6 +32,7 @@ export class App extends Component {
     return (
       <Container>
         <Searchbar></Searchbar>
+        <ImageGallery searchText={this.state.searchText}></ImageGallery>
        
       </Container>
     );
