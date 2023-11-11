@@ -4,30 +4,27 @@ import { SearchForm, Header, SearchBtn, SearchInput } from './Searchbar.styled';
 
 
 
-
-
-
 export default class Searchbar extends Component {
   state = {
-    txt: '',
+    initialQuery: '',
   };
 
   handleInputChange = e => {
-    this.setState({ txt: e.currentTarget.value });
+    this.setState({ initialQuery: e.currentTarget.value });
   };
   handleSubmit = e => {
     e.preventDefault();
-    const txt = this.state.txt.trim();
-    if (!txt || txt === '') {
-      toast.warn('Insert some text please');
+    const initialQuery = this.state.initialQuery.trim();
+    if (!initialQuery || initialQuery === '') {
+      alert('Insert some text please');
       return;
     }
 
-    this.props.onSubmit(txt);
+    this.props.onSubmit(initialQuery);
    
   };
   render() {
-    const { txt } = this.state;
+    const { initialQuery } = this.state;
     return (
       <Header>
         <SearchForm onSubmit={this.handleSubmit}>
@@ -37,12 +34,12 @@ export default class Searchbar extends Component {
           </SearchBtn>
 
           <input
-            className={css['SearchForm-input']}
+            
             type="text"
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
-            value={txt}
+            value={initialQuery}
             onChange={this.handleInputChange}
           />
         </SearchForm>

@@ -1,8 +1,8 @@
 import { Component } from "react";
-
-import Searchbar from "./Searchbar/Searchbar";
-import ImageGallery from "./ImageGallery/ImageGallery";
 import { Container } from "./App.styled";
+import Searchbar from "./Searchbar/Searchbar";
+
+
 
 
 
@@ -10,7 +10,7 @@ export class App extends Component {
   state = {
     image: [],
     searchQuery: '',
-    
+
   }
   
   handleFormSubmit = query => {
@@ -24,9 +24,7 @@ export class App extends Component {
         <Searchbar
           onSubmit={this.handleFormSubmit}
         />
-        <ImageGallery
-          searchQuery={searchQuery}
-        />
+       
         
       </Container>
     );
