@@ -1,18 +1,18 @@
-const { Component } = require("react");
+import { fetchImages } from 'services/getImages';
+
+const { Component } = require('react');
 
 class ImageGallery extends Component {
-    state = {}
+  state = {};
 
-    componentDidUpdate(prevState, prevProps) {
-
-        if (prevProps.searchText !== this.props.searchText) {
-            fetch()
-        }
+  componentDidUpdate(prevState, prevProps) {
+    if (prevProps.searchText !== this.props.searchText) {
+      fetchImages(this.props.searchText);
     }
+  }
 
-    render() {
-        return 
-    }
-    
+  render() {
+    return;
+  }
 }
-export default ImageGallery
+export default ImageGallery;

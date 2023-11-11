@@ -11,6 +11,7 @@ export class App extends Component {
 
     ],
     searchText: '',
+    
   };
 
 
@@ -31,7 +32,7 @@ export class App extends Component {
 
     return (
       <Container>
-        <Searchbar></Searchbar>
+        <Searchbar handleSearch={this.handleSearch}></Searchbar>
         <ImageGallery searchText={this.state.searchText}></ImageGallery>
        
       </Container>
