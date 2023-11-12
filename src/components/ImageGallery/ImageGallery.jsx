@@ -3,8 +3,7 @@ import { fetchImages } from 'services/getImages';
 import GalleryItem from 'components/GalleryItem/GalleryItem';
 import Loader from 'components/Loader/Loader';
 import LoadMoreButton from 'components/LoadMoreBtn/LoadMore';
-import { ImageGalleryList } from './ImageGallery.styled'; 
-
+import { ImageGalleryList } from './ImageGallery.styled';
 
 class ImageGallery extends Component {
   state = {
@@ -19,6 +18,11 @@ class ImageGallery extends Component {
         this.setState({ isLoading: true, page: 1 });
         const images = await fetchImages(this.props.searchText, 1);
 
+        if (images.length === 0) {
+          alert('Sorry, there are no images matching your search.');
+          return;
+        }
+
         this.setState({ images });
       } catch (error) {
         console.error('Error fetching images:', error.message);
@@ -30,14 +34,26 @@ class ImageGallery extends Component {
 
   loadMore = async () => {
     try {
-      this.setState((prevState) => ({ isLoading: true, page: prevState.page + 1 }));
-      const newImages = await fetchImages(this.props.searchText, this.state.page + 1);
-
       this.setState((prevState) => ({
-        images: [...(prevState.images || []), ...newImages],
+        isLoading: true,
+        page: prevState.page + 1,
       }));
+      const newImages = await fetchImages(
+        this.props.searchText,
+        this.state.page + 1
+      );
+      const imgPerPage = 12;
+      if (newImages.length > 0) {
+        this.setState((prevState) => ({
+          images: [...(prevState.images || []), ...newImages],
+        }));
+      }
+
+      if (newImages.length < imgPerPage) {
+        alert("You've reached the end of search results.");
+      }
     } catch (error) {
-      console.error('Error fetching more images:', error.message);
+      alert('Error fetching more images:', error.message);
     } finally {
       this.setState({ isLoading: false });
     }
@@ -47,9 +63,7 @@ class ImageGallery extends Component {
     const { images, isLoading } = this.state;
 
     return (
-      
-            <div>
-
+      <div>
         {isLoading && <Loader />}
         {images && (
           <>
@@ -58,11 +72,14 @@ class ImageGallery extends Component {
                 <GalleryItem key={image.id} image={image} />
               ))}
             </ImageGalleryList>
-            <LoadMoreButton onClick={this.loadMore} disabled={isLoading} />
-          </>
+            {images.length > 0 && (
+              <LoadMoreButton onClick={this.loadMore} disabled={isLoading}>
+                {isLoading ? 'Loading...' : 'Load More'}
+              </LoadMoreButton>
             )}
-            </div>
-      
+          </>
+        )}
+      </div>
     );
   }
 }
