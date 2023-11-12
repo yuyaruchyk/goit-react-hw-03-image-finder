@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { SearchForm, Header, SearchBtn, SearchInput } from './Searchbar.styled';
-
+import { AiOutlineSearch } from 'react-icons/ai';
 
 
 export default class Searchbar extends Component {
@@ -22,18 +22,14 @@ export default class Searchbar extends Component {
     };
     
 
-  render() {
-    
+render() {
     return (
       <Header>
         <SearchForm onSubmit={this.handleSubmit}>
           <SearchBtn type="submit">
-           
-            <SearchInput />
+            <AiOutlineSearch size={30} />
           </SearchBtn>
-
           <input
-            
             type="text"
             autoComplete="off"
             autoFocus
@@ -46,3 +42,5 @@ export default class Searchbar extends Component {
     );
   }
 }
+
+
