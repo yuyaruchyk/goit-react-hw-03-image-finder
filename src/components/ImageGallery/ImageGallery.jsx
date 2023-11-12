@@ -5,6 +5,7 @@ import Loader from 'components/Loader/Loader';
 import LoadMoreButton from 'components/LoadMoreBtn/LoadMore';
 import { ImageGalleryList } from './ImageGallery.styled'; 
 
+
 class ImageGallery extends Component {
   state = {
     images: null,
@@ -46,7 +47,9 @@ class ImageGallery extends Component {
     const { images, isLoading } = this.state;
 
     return (
-      <div>
+      
+            <div>
+
         {isLoading && <Loader />}
         {images && (
           <>
@@ -57,8 +60,9 @@ class ImageGallery extends Component {
             </ImageGalleryList>
             <LoadMoreButton onClick={this.loadMore} disabled={isLoading} />
           </>
-        )}
-      </div>
+            )}
+            </div>
+      
     );
   }
 }

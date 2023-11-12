@@ -7,6 +7,7 @@ export const BtnContainer = styled.div`
 `;
 
 export const GalletyBtn = styled.button`
+margin-top: 20px;
   max-width: 300px;
   padding: 8px 16px;
   border-radius: 2px;
