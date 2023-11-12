@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { fetchImages } from 'services/getImages';
 import GalleryItem from 'components/GalleryItem/GalleryItem';
 import Loader from 'components/Loader/Loader';
+import { ImageGalleryList } from './ImageGallery.styled';
 
 class ImageGallery extends Component {
   state = {
@@ -31,11 +32,11 @@ class ImageGallery extends Component {
       <div>
         {isLoading && <Loader/>}
         {images && (
-          <ul>
+          <ImageGalleryList>
             {images.map((image) => (
               <GalleryItem key={image.id} image={image} />
             ))}
-          </ul>
+          </ImageGalleryList>
         )}
       </div>
     );

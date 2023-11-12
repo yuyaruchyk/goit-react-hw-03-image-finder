@@ -1,8 +1,10 @@
+import { GalleryLi, GalleryImage } from "./GalleryItem.styled";
+
 const GalleryItem = ({ image }) => (
-  <li key={image.id}>
-    <img src={image.webformatURL} alt={image.tags} />
-    <p>{image.tags}</p>
-  </li>
+  <GalleryLi key={image.id}>
+    <GalleryImage src={image.webformatURL} alt={image.tags} />
+    
+  </GalleryLi>
 );
 
 export default GalleryItem;
