@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fetchImages } from 'services/getImages';
+import GalleryItem from 'components/GalleryItem/GalleryItem';
 
 class ImageGallery extends Component {
     state = {
@@ -19,22 +20,15 @@ class ImageGallery extends Component {
         }
     }
 
- render() {
-    
+  render() {
     const { images } = this.state;
 
-  return (
+    return (
       <div>
-        
-
         {images && (
           <ul>
-                  {images.map((image) => (
-                
-              <li key={image.id}>
-                <img src={image.webformatURL} alt={images.id} />
-                
-              </li>
+            {images.map((image) => (
+              <GalleryItem key={image.id} image={image} />
             ))}
           </ul>
         )}
