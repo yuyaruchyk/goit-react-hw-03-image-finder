@@ -1,10 +1,14 @@
 
-import { GalletyBtn } from './LoadMoreBtn.styled'; 
+import { GalletyBtn, BtnContainer } from './LoadMoreBtn.styled'; 
 
 const LoadMoreButton = ({ onClick, disabled }) => (
-  <GalletyBtn onClick={onClick} disabled={disabled}>
+    <BtnContainer>
+    <GalletyBtn onClick={onClick} disabled={disabled}>
     {disabled ? 'Loading...' : 'Load More'}
   </GalletyBtn>
+
+    </BtnContainer>
+  
 );
 
 export default LoadMoreButton;

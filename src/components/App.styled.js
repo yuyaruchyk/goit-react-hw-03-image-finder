@@ -2,14 +2,13 @@ import styled from 'styled-components'
 
 
 export const Container = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  width: 100%;
-  padding: 20px;
-  margin-top: 20px;
-  background-color: white;
-  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+  padding-bottom: 24px;
+   
+  justify-content: center;
+  align-items: center;
 
 
 
