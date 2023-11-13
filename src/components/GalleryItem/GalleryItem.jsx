@@ -1,7 +1,7 @@
-import { Component } from "react";
+import { Component } from 'react';
 import React from 'react';
 import { ModalImage } from 'components/Modal/Modal';
-import { GalleryLi, GalleryImage } from "./GalleryItem.styled";
+import { GalleryLi, GalleryImage } from './GalleryItem.styled';
 
 class GalleryItem extends Component {
   state = {
@@ -23,7 +23,7 @@ class GalleryItem extends Component {
     return (
       <GalleryLi>
         <GalleryImage onClick={this.openModal} src={img} alt={tag} />
-        
+
         {isModalOpen && (
           <ModalImage
             modalIsOpen={isModalOpen}
@@ -38,4 +38,3 @@ class GalleryItem extends Component {
 }
 
 export default GalleryItem;
-

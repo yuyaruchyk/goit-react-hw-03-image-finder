@@ -1,10 +1,6 @@
-
 import styled from 'styled-components';
 
-
-
 export const Header = styled.header`
-
   top: 0;
   left: 0;
   margin-bottom: 20px;
@@ -14,7 +10,7 @@ export const Header = styled.header`
   justify-content: center;
   align-items: center;
   min-height: 64px;
- 
+
   padding-right: 24px;
   padding-left: 24px;
   padding-top: 12px;

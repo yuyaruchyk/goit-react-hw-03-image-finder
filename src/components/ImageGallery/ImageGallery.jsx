@@ -20,8 +20,14 @@ class ImageGallery extends Component {
         this.setState({ isLoading: true, page: 1 });
         const images = await fetchImages(this.props.searchText, 1);
 
+        if (this.props.searchText === '') {
+          toast.warn('Enter a word to search for');
+          return;
+        }
+
         if (images.length === 0) {
           toast.warn('Sorry, there are no images matching your search.');
+
           return;
         }
 
@@ -36,7 +42,7 @@ class ImageGallery extends Component {
 
   loadMore = async () => {
     try {
-      this.setState((prevState) => ({
+      this.setState(prevState => ({
         isLoading: true,
         page: prevState.page + 1,
       }));
@@ -46,7 +52,7 @@ class ImageGallery extends Component {
       );
       const imgPerPage = 12;
       if (newImages.length > 0) {
-        this.setState((prevState) => ({
+        this.setState(prevState => ({
           images: [...(prevState.images || []), ...newImages],
         }));
       }
@@ -71,7 +77,7 @@ class ImageGallery extends Component {
         {images && (
           <>
             <ImageGalleryList>
-              {images.map((image) => (
+              {images.map(image => (
                 <GalleryItem
                   key={image.id}
                   img={image.webformatURL}
