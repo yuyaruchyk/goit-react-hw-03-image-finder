@@ -4,6 +4,8 @@ import GalleryItem from 'components/GalleryItem/GalleryItem';
 import Loader from 'components/Loader/Loader';
 import LoadMoreButton from 'components/LoadMoreBtn/LoadMore';
 import { ImageGalleryList } from './ImageGallery.styled';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class ImageGallery extends Component {
   state = {
@@ -19,7 +21,7 @@ class ImageGallery extends Component {
         const images = await fetchImages(this.props.searchText, 1);
 
         if (images.length === 0) {
-          alert('Sorry, there are no images matching your search.');
+          toast.warn('Sorry, there are no images matching your search.');
           return;
         }
 
@@ -34,7 +36,7 @@ class ImageGallery extends Component {
 
   loadMore = async () => {
     try {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         isLoading: true,
         page: prevState.page + 1,
       }));
@@ -44,16 +46,16 @@ class ImageGallery extends Component {
       );
       const imgPerPage = 12;
       if (newImages.length > 0) {
-        this.setState(prevState => ({
+        this.setState((prevState) => ({
           images: [...(prevState.images || []), ...newImages],
         }));
       }
 
       if (newImages.length < imgPerPage) {
-        alert("You've reached the end of search results.");
+        toast.info("You've reached the end of search results.");
       }
     } catch (error) {
-      alert('Error fetching more images:', error.message);
+      toast.error('Error fetching more images: ' + error.message);
     } finally {
       this.setState({ isLoading: false });
     }
@@ -64,16 +66,18 @@ class ImageGallery extends Component {
 
     return (
       <div>
+        <ToastContainer />
         {isLoading && <Loader />}
         {images && (
           <>
             <ImageGalleryList>
-              {images.map(image => (
-                <GalleryItem  key={image.id}
-            img={image.webformatURL}
-            largeImg={image.largeImageURL}
-            tag={image.tags}
-          />
+              {images.map((image) => (
+                <GalleryItem
+                  key={image.id}
+                  img={image.webformatURL}
+                  largeImg={image.largeImageURL}
+                  tag={image.tags}
+                />
               ))}
             </ImageGalleryList>
             {images.length > 0 && (
