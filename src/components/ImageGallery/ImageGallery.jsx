@@ -34,7 +34,7 @@ class ImageGallery extends Component {
 
   loadMore = async () => {
     try {
-      this.setState((prevState) => ({
+      this.setState(prevState => ({
         isLoading: true,
         page: prevState.page + 1,
       }));
@@ -44,7 +44,7 @@ class ImageGallery extends Component {
       );
       const imgPerPage = 12;
       if (newImages.length > 0) {
-        this.setState((prevState) => ({
+        this.setState(prevState => ({
           images: [...(prevState.images || []), ...newImages],
         }));
       }
@@ -68,8 +68,12 @@ class ImageGallery extends Component {
         {images && (
           <>
             <ImageGalleryList>
-              {images.map((image) => (
-                <GalleryItem key={image.id} image={image} />
+              {images.map(image => (
+                <GalleryItem  key={image.id}
+            img={image.webformatURL}
+            largeImg={image.largeImageURL}
+            tag={image.tags}
+          />
               ))}
             </ImageGalleryList>
             {images.length > 0 && (

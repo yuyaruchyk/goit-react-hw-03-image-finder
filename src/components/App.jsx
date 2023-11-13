@@ -4,37 +4,23 @@ import { Container } from './App.styled';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 
-
 export class App extends Component {
   state = {
-    images: [
-
-    ],
+    images: [],
     searchText: '',
     
   };
 
-
-
-  handleSearch = (searchText) => {
-    this.setState({searchText})
-
-  }
-
-
-
-
-
+  handleSearch = searchText => {
+    this.setState({ searchText });
+  };
 
   render() {
-    const { searchQuery } = this.state;
-    
-
     return (
       <Container>
         <Searchbar handleSearch={this.handleSearch}></Searchbar>
         <ImageGallery searchText={this.state.searchText}></ImageGallery>
-       
+        
       </Container>
     );
   }
