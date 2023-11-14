@@ -53,6 +53,6 @@ body {
     display: block;
     max-width: 100%;
     object-fit: cover;
-   
+   height: 100%;
   }
 `;
