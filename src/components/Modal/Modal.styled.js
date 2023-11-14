@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LargeImage = styled.img`
+export const LargeModalImage = styled.img`
   max-width: 900px;
   max-height: 600px;
 `;

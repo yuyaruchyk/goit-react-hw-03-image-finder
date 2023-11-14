@@ -1,13 +1,12 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const BtnContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+export const ButtonContainer = styled.div`
+display: flex;
+justify-content: center;
 `;
 
-export const GalletyBtn = styled.button`
-  margin-top: 20px;
+export const Button = styled.button`
+   margin-top: 20px;
   margin-right: auto;
   margin-left: auto;
   padding: 8px 16px;

@@ -1,11 +1,11 @@
 import { Component } from 'react';
-
-import { SearchBar } from './Searchbar/Searchbar';
+import { GlobalStyle } from 'GlobalStyle';
+import { PictureSearchBar } from './Searchbar/Searchbar';
 import { List } from './ImageGallery/ImageGallery';
-import  LoadMoreButton  from './LoadMoreBtn/LoadMore';
-import { Loader } from './Loader/Loader';
+import { LoadMoreButton } from './Button/Button';
+import { ImageLoader } from './Loader/Loader';
 import { Container } from './App.styled';
-import { fetchImages } from 'services/getImages';
+import { apiFetchImages } from 'api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -44,7 +44,7 @@ export class App extends Component {
       const valueAfterSlash = valueSearch.split('/').pop();
       try {
         this.setState({ isLoading: true, isError: false });
-        const response = await fetchImages(valueAfterSlash, page);
+        const response = await apiFetchImages(valueAfterSlash, page);
         const newImages = response.data.hits;
         const totalHits = response.data.totalHits;
 
@@ -69,17 +69,15 @@ export class App extends Component {
     const { images, isLoading, totalHits } = this.state;
     return (
       <Container>
-        <SearchBar onSubmit={this.handleSubmit} />
+        <PictureSearchBar onSubmit={this.handleSubmit} />
         {images.length > 0 && <List images={images} />}
-        {isLoading && <Loader />}
+        {isLoading && <ImageLoader />}
         {images.length > 0 && !isLoading && totalHits > images.length && (
           <LoadMoreButton onClick={this.handleLoadMore} />
         )}
-       
-        <ToastContainer />
+        <GlobalStyle />
+         <ToastContainer />
       </Container>
     );
   }
 }
-
-export default App;

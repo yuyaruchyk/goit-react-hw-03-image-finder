@@ -1,20 +1,17 @@
+import { FaSearch } from 'react-icons/fa';
+import { SearchBar, SearchForm, SearchFormButton, SearchInput } from './Searchbar.styled';
 
-import { SearchForm, Header, SearchBtn, SearchInput } from './Searchbar.styled';
-import { AiOutlineSearch } from 'react-icons/ai';
-
-
-
-export const SearchBar = ({ onSubmit }) => {
+export const PictureSearchBar = ({ onSubmit }) => {
   return (
-    <Header>
+    <SearchBar>
       <SearchForm onSubmit={event => {
         event.preventDefault()
           onSubmit(event.target[1].value);
           event.target[1].value = '';
         }}>
-        <SearchBtn type="submit">
-            <AiOutlineSearch style={{ height: 24, width: 24 }} />
-        </SearchBtn>
+        <SearchFormButton type="submit">
+            <FaSearch style={{ height: 24, width: 24 }} />
+        </SearchFormButton>
         <SearchInput 
           type="text"
           autoComplete="off"
@@ -22,7 +19,7 @@ export const SearchBar = ({ onSubmit }) => {
           placeholder="Search images and photos"
         />
       </SearchForm>
-    </Header>
+    </SearchBar>
   );
 };
 

@@ -1,15 +1,8 @@
-import styled from 'styled-components'
-
+import styled from "styled-components";
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 16px;
-  padding-bottom: 24px;
-   
-  justify-content: center;
-  align-items: center;
-
-
-
-`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 2opx;
+`;

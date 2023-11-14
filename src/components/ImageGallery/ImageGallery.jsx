@@ -1,5 +1,4 @@
-
-import { GalleryItem } from 'components/GalleryItem/GalleryItem';
+import { GalleryItem } from "../ImageGalleryItem/ImageGalleryItem.jsx";
 import { GalleryList } from "./ImageGallery.styled";
 
 

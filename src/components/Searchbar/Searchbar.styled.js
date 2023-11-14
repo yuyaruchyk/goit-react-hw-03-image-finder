@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const Header = styled.header`
-  top: 0;
+export const SearchBar = styled.header`
+ top: 0;
   left: 0;
   margin-bottom: 20px;
   position: sticky;
@@ -31,8 +31,8 @@ export const SearchForm = styled.form`
   overflow: hidden;
 `;
 
-export const SearchBtn = styled.button`
-  display: inline-block;
+export const SearchFormButton = styled.button`
+ display: inline-block;
   width: 48px;
   height: 48px;
   border: 0;

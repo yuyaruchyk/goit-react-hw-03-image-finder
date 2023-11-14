@@ -1,46 +1,47 @@
 import Modal from 'react-modal';
-import { LargeImage } from './Modal.styled';
+import { LargeModalImage } from './Modal.styled';
 
 const customStyles = {
-  overlay: {
-    position: 'fixed',
-    top: '0px',
-    left: '0px',
-    width: '100vw',
-    height: '100vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    background: 'rgba(0, 0, 0, 0.8)',
-    zIndex: 1200,
-  },
-
   content: {
-    position: 'absolute',
     top: '50%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    padding: '0px',
-    border: 'none',
-    background: 'transparent',
+  },
+
+  overlay: {
+    position: `fixed`,
+    top: `0`,
+    left: `0`,
+    width: `100vw`,
+    height: `100vh`,
+    display: `flex`,
+    justifyContent: `center`,
+    alignItems: `center`,
+    backgroundColor: `rgba(0, 0, 0, 0.8)`,
+    zIndex: `1200`,
+  },
+
+  modal: {
+    maxWidth: `calc(100vw - 48px)`,
+    maxHeight: `calc(100vh - 24px)`,
   },
 };
 
 Modal.setAppElement('#root');
 
-export const ModalImage = ({ modalIsOpen, closeModal, largeImg, topic }) => {
+export const ModalWindow = ({ isOpen, onClose, largeImage, tags }) => {
   return (
     <Modal
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
+      isOpen={isOpen}
+      onRequestClose={onClose}
       style={customStyles}
-      contentLabel="Image Gallery Modal"
-    >
+      contentLabel="Modal"
+      >
       <div>
-        <LargeImage src={largeImg} alt={topic} />
+        <LargeModalImage src={largeImage} alt={tags} />
       </div>
     </Modal>
   );

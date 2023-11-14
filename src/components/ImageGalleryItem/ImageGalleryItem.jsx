@@ -1,6 +1,6 @@
 import { Component } from "react";
-import { GalleryImage, Image } from "./GalleryItem.styled";
-import { ModalImage } from '../Modal/Modal';
+import { GalleryImage, Image } from "./ImageGalleryItem.styled";
+import { ModalWindow } from '../Modal/Modal';
 
 export class GalleryItem extends Component {
   state = {
@@ -25,7 +25,7 @@ export class GalleryItem extends Component {
     return (
     <GalleryImage>
         <Image src={img} alt={tags} onClick={this.openModal}/>
-        <ModalImage
+        <ModalWindow
           isOpen={isModalOpen}
           onClose={this.closeModal}
           largeImage={largeImg}
