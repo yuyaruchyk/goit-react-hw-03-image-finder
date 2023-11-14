@@ -18,17 +18,19 @@ export class App extends Component {
     isError: false,
   };
 
-  handleSubmit = value => {
-    if (value.trim() === '') {
-      return;
-       } else {
-      this.setState({
-        searchText: `${Date.now()}/${value}`,
-        page: 1,
-        images: [],
-      });
-    }
-  };
+ handleSubmit = value => {
+  if (value.trim() === '') {
+    
+    toast.error('Please enter a search value');
+    return;
+  } else {
+    this.setState({
+      searchText: `${Date.now()}/${value}`,
+      page: 1,
+      images: [],
+    });
+  }
+};
 
   handleLoadMore = () => {
     this.setState(prevState => {
@@ -50,7 +52,10 @@ export class App extends Component {
 
         if (newImages.length === 0) {
           toast.error('No more images');
-        } else {
+        }
+        
+
+        else {
           this.setState(prevState => ({
             images: [...prevState.images, ...newImages],
             totalHits,
