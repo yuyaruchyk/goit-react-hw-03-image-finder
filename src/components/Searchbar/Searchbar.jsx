@@ -1,7 +1,7 @@
 import { FaSearch } from 'react-icons/fa';
 import { SearchBar, SearchForm, SearchFormButton, SearchInput } from './Searchbar.styled';
 
-export const PictureSearchBar = ({ onSubmit }) => {
+export const Searchbar = ({ onSubmit }) => {
   return (
     <SearchBar>
       <SearchForm onSubmit={event => {

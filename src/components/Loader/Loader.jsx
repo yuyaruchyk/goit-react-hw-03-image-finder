@@ -1,18 +1,18 @@
-import { MagnifyingGlass } from 'react-loader-spinner';
+import { Circles } from 'react-loader-spinner';
 import { Loader } from './Loader.styled';
 
-export const ImageLoader = () => {
-    return (
-        <Loader>
-        <MagnifyingGlass
-        visible={true}
-        height="120"
-        width="120"
-        ariaLabel="MagnifyingGlass-loading"
-        wrapperClass="MagnifyingGlass-wrapper"
-        glassColor = '#ecf4f7'
-        color = '#3f51b5'
-        />
-        </Loader>
-    )
-}
+export const MainLoader = () => {
+  return (
+    <Loader>
+    <Circles
+  height="80"
+  width="80"
+  color="blue"
+  ariaLabel="circles-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+/>
+    </Loader>
+  );
+};

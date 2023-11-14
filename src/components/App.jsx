@@ -1,18 +1,18 @@
 import { Component } from 'react';
 import { GlobalStyle } from 'GlobalStyle';
-import { PictureSearchBar } from './Searchbar/Searchbar';
+import { Searchbar } from './Searchbar/Searchbar';
 import { List } from './ImageGallery/ImageGallery';
 import { LoadMoreButton } from './Button/Button';
-import { ImageLoader } from './Loader/Loader';
+import { MainLoader } from './Loader/Loader';
 import { Container } from './App.styled';
-import { apiFetchImages } from 'api';
+import { fetchImages } from 'api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export class App extends Component {
   state = {
     images: [],
-    valueSearch: '',
+    searchText: '',
     page: 1,
     isLoading: false,
     isError: false,
@@ -21,9 +21,9 @@ export class App extends Component {
   handleSubmit = value => {
     if (value.trim() === '') {
       return;
-    } else {
+       } else {
       this.setState({
-        valueSearch: `${Date.now()}/${value}`,
+        searchText: `${Date.now()}/${value}`,
         page: 1,
         images: [],
       });
@@ -39,12 +39,12 @@ export class App extends Component {
   };
 
   async componentDidUpdate(prevProps, prevState) {
-    const { valueSearch, page } = this.state;
-    if (prevState.valueSearch !== valueSearch || prevState.page !== page) {
-      const valueAfterSlash = valueSearch.split('/').pop();
+    const { searchText, page } = this.state;
+    if (prevState.searchText !== searchText || prevState.page !== page) {
+      const valueAfterSlash = searchText.split('/').pop();
       try {
         this.setState({ isLoading: true, isError: false });
-        const response = await apiFetchImages(valueAfterSlash, page);
+        const response = await fetchImages(valueAfterSlash, page);
         const newImages = response.data.hits;
         const totalHits = response.data.totalHits;
 
@@ -69,9 +69,9 @@ export class App extends Component {
     const { images, isLoading, totalHits } = this.state;
     return (
       <Container>
-        <PictureSearchBar onSubmit={this.handleSubmit} />
+        <Searchbar onSubmit={this.handleSubmit} />
         {images.length > 0 && <List images={images} />}
-        {isLoading && <ImageLoader />}
+        {isLoading && <MainLoader />}
         {images.length > 0 && !isLoading && totalHits > images.length && (
           <LoadMoreButton onClick={this.handleLoadMore} />
         )}
