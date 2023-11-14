@@ -9,6 +9,10 @@ export const GalleryImage = styled.li`
 export const Image = styled.img`
   
   object-fit: cover;
+    
+  
+   width: 100%; 
+   height: 100%; 
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
   transform: scale(1.03);
