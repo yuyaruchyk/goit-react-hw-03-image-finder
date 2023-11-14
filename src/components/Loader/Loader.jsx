@@ -1,16 +1,22 @@
 
-import { Blocks } from  'react-loader-spinner'
+import { MagnifyingGlass } from 'react-loader-spinner'
+import { LoaderStyled } from './Loader.styled';
 
 
 export const Loader = () => {
-    <Blocks
-  visible={true}
-  height="80"
-  width="80"
-  ariaLabel="blocks-loading"
-  wrapperStyle={{}}
-  wrapperClass="blocks-wrapper"
-/>
+  <LoaderStyled>
+    <MagnifyingGlass
+        visible={true}
+        height="120"
+        width="120"
+        ariaLabel="MagnifyingGlass-loading"
+        wrapperClass="MagnifyingGlass-wrapper"
+        glassColor = '#ecf4f7'
+        color = '#3f51b5'
+        />
+
+  </LoaderStyled>
+
 }
 
 export default Loader;
